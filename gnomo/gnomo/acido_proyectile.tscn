@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://cp2t21vm4bxix"]
+
+[ext_resource type="Script" uid="uid://dwwitqqg48ae4" path="res://acido_proyectile.gd" id="1_2ipn6"]
+[ext_resource type="Texture2D" uid="uid://dlfj1tbjqaf50" path="res://Escenas ataques/ezgif-split (2)/frame_0_delay-0.06s.png" id="1_85ixs"]
+[ext_resource type="Texture2D" uid="uid://0hpm7w81cwim" path="res://Escenas ataques/ezgif-split (2)/frame_1_delay-0.06s.png" id="2_2ipn6"]
+[ext_resource type="Texture2D" uid="uid://caqee47anhg2o" path="res://Escenas ataques/ezgif-split (2)/frame_2_delay-0.06s.png" id="3_hwy7e"]
+[ext_resource type="Texture2D" uid="uid://cdyduiucffmrq" path="res://Escenas ataques/ezgif-split (2)/frame_3_delay-0.06s.png" id="4_swpxd"]
+[ext_resource type="Texture2D" uid="uid://dwwpvrj5k4hy4" path="res://Escenas ataques/ezgif-split (2)/frame_4_delay-0.06s.png" id="5_xrtpq"]
+[ext_resource type="Texture2D" uid="uid://ce8vs6uhjqoho" path="res://Escenas ataques/ezgif-split (2)/frame_5_delay-0.06s.png" id="6_elmeh"]
+[ext_resource type="Texture2D" uid="uid://ht4hw0g5ga7l" path="res://Escenas ataques/ezgif-split (2)/frame_6_delay-0.06s.png" id="7_i6x0n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3cj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85ixs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2ipn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hwy7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_swpxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xrtpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_elmeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i6x0n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85ixs"]
+radius = 5.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 21
+collision_mask = 21
+script = ExtResource("1_2ipn6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_x3cj7")
+frame_progress = 0.997583
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_85ixs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

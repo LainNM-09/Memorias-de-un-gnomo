@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://euuoqsoat6ok"]
+
+[ext_resource type="Script" path="res://hechizo_fuego.gd" id="1_usbap"]
+[ext_resource type="Texture2D" uid="uid://b8wg65gt3s0a6" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/FB500-5.png" id="2_mc6gs"]
+[ext_resource type="Texture2D" uid="uid://c27p8l06jobsr" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/FB500-2.png" id="3_xl8jw"]
+[ext_resource type="Texture2D" uid="uid://b0rlldyv6kqiw" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/FB500-3.png" id="4_hv4dq"]
+[ext_resource type="Texture2D" uid="uid://xyi80l5g6lk7" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/FB500-4.png" id="5_wj06j"]
+[ext_resource type="Texture2D" uid="uid://cp6tena1cxkfa" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/B500-2.PNG" id="6_i33id"]
+[ext_resource type="Texture2D" uid="uid://bsaem1c7jkr2q" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/B500-3.PNG" id="7_wq3rv"]
+[ext_resource type="Texture2D" uid="uid://dv72fc5dwu6uu" path="res://Escenas hechizos/sprites hechizos/fireball_V_1_1/B500-4.PNG" id="8_g8jrf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1y63n"]
+radius = 13.0384
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klsvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mc6gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xl8jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hv4dq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wj06j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mc6gs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_i33id")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wq3rv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g8jrf")
+}],
+"loop": false,
+"name": &"final",
+"speed": 5.0
+}]
+
+[node name="hechizo_fuego" type="Area2D"]
+collision_layer = 30
+collision_mask = 30
+script = ExtResource("1_usbap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1y63n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0.999996)
+scale = Vector2(0.0761719, 0.0537109)
+sprite_frames = SubResource("SpriteFrames_klsvm")
+animation = &"final"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

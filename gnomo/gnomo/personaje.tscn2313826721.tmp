@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmbgry6e7ro5f"]
+
+[ext_resource type="Texture2D" uid="uid://caxy4kfufx2rp" path="res://personaje ramdon/Run.png" id="1_4e5bt"]
+[ext_resource type="PackedScene" uid="uid://by0e74g4k1a82" path="res://character_body_2d.tscn" id="2_ltgau"]
+[ext_resource type="Script" uid="uid://bnxtrdfsrgxt7" path="res://h_box_container.gd" id="3_yppqc"]
+[ext_resource type="Texture2D" uid="uid://c6dp8ij5dygo4" path="res://personaje ramdon/Walk.png" id="4_ck3sb"]
+[ext_resource type="Texture2D" uid="uid://codp86y1nw7t6" path="res://personaje ramdon/Idle.png" id="5_cx4ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltgau"]
+size = Vector2(1256, 122)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="jugador" parent="." instance=ExtResource("2_ltgau")]
+position = Vector2(566, 244)
+
+[node name="Camera2D" type="Camera2D" parent="jugador"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="jugador/Camera2D"]
+offset_left = -497.0
+offset_top = -258.0
+offset_right = -394.0
+offset_bottom = -215.0
+script = ExtResource("3_yppqc")
+corazon_lleno = ExtResource("4_ck3sb")
+corazon_vacio = ExtResource("5_cx4ix")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(609, 694)
+shape = SubResource("RectangleShape2D_ltgau")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(71.5, -39)
+scale = Vector2(1.13965, 1.60938)
+texture = ExtResource("1_4e5bt")

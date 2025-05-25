@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://by0e74g4k1a82"]
+
+[ext_resource type="Texture2D" uid="uid://codp86y1nw7t6" path="res://personaje ramdon/Idle.png" id="1_f50pn"]
+[ext_resource type="Script" uid="uid://dy7qxcpgsoop2" path="res://personajerandom.gd" id="1_ij6vw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij6vw"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghijl"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44cfe"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd465"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhvu3"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sjlk"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij6vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghijl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44cfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd465")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhvu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sjlk")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ct3r"]
+radius = 26.0
+height = 108.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ij6vw"]
+radius = 23.0
+height = 122.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ij6vw")
+
+[node name="animaated" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qp52p")
+animation = &"quieto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_6ct3r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 16)
+shape = SubResource("CapsuleShape2D_ij6vw")

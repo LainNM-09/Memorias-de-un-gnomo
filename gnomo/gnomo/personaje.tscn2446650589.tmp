@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmbgry6e7ro5f"]
+
+[ext_resource type="Texture2D" uid="uid://caxy4kfufx2rp" path="res://personaje ramdon/Run.png" id="1_4e5bt"]
+[ext_resource type="PackedScene" uid="uid://by0e74g4k1a82" path="res://character_body_2d.tscn" id="2_ltgau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltgau"]
+size = Vector2(1256, 122)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="jugador" parent="." instance=ExtResource("2_ltgau")]
+position = Vector2(566, 244)
+
+[node name="Camera2D" type="Camera2D" parent="jugador"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(609, 694)
+shape = SubResource("RectangleShape2D_ltgau")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+position = Vector2(71.5, -39)
+scale = Vector2(1.13965, 1.60938)
+texture = ExtResource("1_4e5bt")

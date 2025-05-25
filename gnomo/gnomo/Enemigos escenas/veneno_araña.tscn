@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckxc2k4o0xywe"]
+
+[ext_resource type="Texture2D" uid="uid://bnyt67yl8fd7q" path="res://Escenas ataques/Effect and Bullet 16x16/Purple Effect and Bullet 16x16.png" id="1_cw6du"]
+[ext_resource type="Script" uid="uid://dlv81dhnxf82u" path="res://Enemigos escenas/veneno_araña.gd" id="1_ud4sd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud4sd"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(480, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et76k"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(496, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq7nr"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(528, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk0a7"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(544, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbrko"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(512, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4olh"]
+atlas = ExtResource("1_cw6du")
+region = Rect2(560, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbdue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud4sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et76k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk0a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbrko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4olh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5t1q"]
+radius = 8.0
+
+[node name="veneno_araña" type="Area2D"]
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_ud4sd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_kbdue")
+frame_progress = 0.361379
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r5t1q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdyaym2h0jv4l"]
+
+[ext_resource type="Script" path="res://hechizo_hielo.gd" id="1_0ct3h"]
+[ext_resource type="Texture2D" uid="uid://ljiewj2kfraa" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-1.png" id="2_6m7lk"]
+[ext_resource type="Texture2D" uid="uid://da76no36tbjfw" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-2.png" id="3_1g1sw"]
+[ext_resource type="Texture2D" uid="uid://edk3fljfd0a" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-3.png" id="4_ngavl"]
+[ext_resource type="Texture2D" uid="uid://b220j861maslo" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-4.png" id="5_wlsh0"]
+[ext_resource type="Texture2D" uid="uid://c7uu02x1i5in5" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-8.png" id="9_7xms8"]
+[ext_resource type="Texture2D" uid="uid://ejn3t4bdj0t2" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-9.png" id="10_bs1ic"]
+[ext_resource type="Texture2D" uid="uid://def6b7wb7qdnq" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-10.png" id="11_i3cfm"]
+[ext_resource type="Texture2D" uid="uid://c2ixosictqv0i" path="res://Escenas hechizos/sprites hechizos/ice_shard/I5050-11.png" id="12_whsw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m7lk"]
+size = Vector2(44, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qngtt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6m7lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1g1sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngavl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wlsh0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7xms8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bs1ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i3cfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_whsw8")
+}],
+"loop": false,
+"name": &"final",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 22
+collision_mask = 22
+script = ExtResource("1_0ct3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_6m7lk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(14.375, -1.25)
+scale = Vector2(0.208496, 0.145508)
+sprite_frames = SubResource("SpriteFrames_qngtt")
+frame = 3
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

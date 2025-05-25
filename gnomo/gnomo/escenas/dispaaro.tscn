@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi4httd3nhdc5"]
+
+[ext_resource type="Script" uid="uid://cp4yv2qktstm2" path="res://scripts/dispaaro.gd" id="1_nqgiv"]
+[ext_resource type="Texture2D" uid="uid://c4nj725y5x6rl" path="res://corazones/corazonlleno}.png" id="2_spr11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oth1g"]
+radius = 60.7289
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_nqgiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+shape = SubResource("CircleShape2D_oth1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-2, 0)
+scale = Vector2(0.129348, 0.0807645)
+texture = ExtResource("2_spr11")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,223 @@
+[gd_scene load_steps=10 format=3 uid="uid://baevwsi2xxawv"]
+
+[ext_resource type="PackedScene" uid="uid://by0e74g4k1a82" path="res://escenas/JUGADOR.tscn" id="1_bg0f4"]
+[ext_resource type="Script" uid="uid://bnxtrdfsrgxt7" path="res://scripts/h_box_container.gd" id="2_jt8tj"]
+[ext_resource type="Texture2D" uid="uid://cudrsrxmtb4b8" path="res://corazones/New Piskel-2.png.png" id="4_y5foh"]
+[ext_resource type="Texture2D" uid="uid://qm8gfato3dr3" path="res://corazones/New Piskel-1.png.png" id="5_su74l"]
+[ext_resource type="PackedScene" uid="uid://c35kidrfk0vgl" path="res://TERRENO/Terreno.tscn" id="8_mxdw6"]
+[ext_resource type="PackedScene" uid="uid://j4n3pgxhe2ym" path="res://Enemigos escenas/EnemigoMelee1.tscn" id="10_cg6it"]
+[ext_resource type="PackedScene" uid="uid://bgplurvrda575" path="res://Enemigos escenas/enemigo_distancia_2.tscn" id="10_y5foh"]
+[ext_resource type="PackedScene" uid="uid://c41lse7xwmbmw" path="res://Enemigos escenas/nido_spawn.tscn" id="11_su74l"]
+[ext_resource type="PackedScene" uid="uid://dl5xdufkdibqs" path="res://Enemigos escenas/EnemigoDistancia1.tscn" id="11_y5foh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("8_mxdw6")]
+
+[node name="JUGADOR" parent="." instance=ExtResource("1_bg0f4")]
+top_level = true
+position = Vector2(303, 492)
+
+[node name="Camera2D2" type="Camera2D" parent="JUGADOR"]
+position = Vector2(0, -15)
+zoom = Vector2(1.2, 1.2)
+
+[node name="vidaBox" type="HBoxContainer" parent="JUGADOR"]
+custom_minimum_size = Vector2(16, 16)
+layout_direction = 2
+offset_left = -797.0
+offset_top = -412.0
+offset_right = -217.0
+offset_bottom = 368.0
+scale = Vector2(0.1, 0.1)
+script = ExtResource("2_jt8tj")
+full_heart = ExtResource("4_y5foh")
+empty_heart = ExtResource("5_su74l")
+player = NodePath("..")
+
+[node name="EnemigoMelee1" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(1190, -403)
+
+[node name="EnemigoDistancia1" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(273, 971)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("11_y5foh")]
+top_level = true
+position = Vector2(1450.79, 415.907)
+
+[node name="EnemigoDistancia2" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(1283.23, 1140.37)
+
+[node name="nido_spawn" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(2097, -608)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(902.989, 1288)
+
+[node name="nido_spawn2" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(560.615, 1005.29)
+
+[node name="CharacterBody2D3" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(872.763, -331.603)
+
+[node name="CharacterBody2D4" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1682.01, -266.76)
+
+[node name="nido_spawn3" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(1457.47, 2524.56)
+
+[node name="nido_spawn4" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(2057.67, 2149.43)
+
+[node name="EnemigoDistancia3" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(1543.21, 1810.74)
+
+[node name="CharacterBody2D5" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(1521.78, 2192.3)
+
+[node name="CharacterBody2D6" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(1219.63, 2443.36)
+
+[node name="EnemigoDistancia4" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(1652.86, 2539.99)
+
+[node name="CharacterBody2D7" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1947.58, 2285.53)
+
+[node name="CharacterBody2D8" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1955.64, 1787.88)
+
+[node name="CharacterBody2D9" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1243.79, 1919.95)
+
+[node name="CharacterBody2D10" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(2996.16, 2258.66)
+
+[node name="CharacterBody2D11" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(3937.69, 1936.26)
+
+[node name="EnemigoDistancia5" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(2970.35, 1381.31)
+
+[node name="CharacterBody2D12" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(3085.49, 468.306)
+
+[node name="CharacterBody2D13" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(3160.44, -822.844)
+
+[node name="CharacterBody2D14" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(2161.85, -1022.56)
+
+[node name="CharacterBody2D15" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(2909.36, -631.685)
+
+[node name="EnemigoDistancia6" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(2161.85, -808.578)
+
+[node name="EnemigoDistancia7" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(2852.3, -780.047)
+
+[node name="nido_spawn5" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(1177.52, -1293.61)
+
+[node name="CharacterBody2D16" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1020.6, -1601.74)
+
+[node name="CharacterBody2D17" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(1343, -999.737)
+
+[node name="CharacterBody2D18" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(997.776, -1193.75)
+
+[node name="nido_spawn6" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(5747.6, -544.177)
+
+[node name="nido_spawn7" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(5733.46, 580.565)
+
+[node name="nido_spawn8" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(7874.47, 545.196)
+
+[node name="nido_spawn9" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(7850.89, -657.358)
+
+[node name="CharacterBody2D19" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(5922.09, -480.512)
+
+[node name="CharacterBody2D20" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(5971.61, 549.911)
+
+[node name="CharacterBody2D21" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(5662.72, -20.712)
+
+[node name="CharacterBody2D22" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(7791.94, 266.958)
+
+[node name="CharacterBody2D23" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(7445.33, -621.989)
+
+[node name="CharacterBody2D24" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(5400.98, 455.594)
+
+[node name="CharacterBody2D25" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(5601.41, -421.563)
+
+[node name="CharacterBody2D26" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(7405.24, -409.773)
+
+[node name="CharacterBody2D27" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(7209.53, 408.435)
+
+[node name="EnemigoDistancia8" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(6554.02, -115.03)
+
+[node name="EnemigoDistancia9" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(5601.41, 278.747)
+
+[node name="EnemigoDistancia10" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(6577.6, -746.96)
+
+[node name="EnemigoDistancia11" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(6881.95, 500.905)
+
+[node name="nido_spawn10" parent="." instance=ExtResource("11_su74l")]
+position = Vector2(6781.6, 53.1763)
+
+[node name="CharacterBody2D28" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(3213, 873)
+
+[node name="EnemigoDistancia12" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(4532.45, 1292.47)
+
+[node name="EnemigoDistancia13" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(5533.95, 2033.85)
+
+[node name="EnemigoDistancia14" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(7586.07, 1215.03)
+
+[node name="EnemigoDistancia15" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(7014.91, 1821.56)
+
+[node name="EnemigoDistancia16" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(4095.87, -752.601)
+
+[node name="CharacterBody2D29" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(3433.25, -1585.35)
+
+[node name="CharacterBody2D30" parent="." instance=ExtResource("10_cg6it")]
+position = Vector2(5080.85, -1558.49)
+
+[node name="EnemigoDistancia17" parent="." instance=ExtResource("10_y5foh")]
+position = Vector2(6943.34, -1227.18)
+
+[node name="CharacterBody2D31" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(7570.14, -1719.67)
+
+[node name="CharacterBody2D32" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(6316.54, -1853.98)
+
+[node name="CharacterBody2D33" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(4179.8, 233.019)
+
+[node name="CharacterBody2D34" parent="." instance=ExtResource("11_y5foh")]
+position = Vector2(544.177, 1738.56)

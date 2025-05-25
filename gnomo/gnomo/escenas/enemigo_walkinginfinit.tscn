@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjmwqxl73jeac"]
+
+[ext_resource type="Script" uid="uid://bfw5sew8ornsw" path="res://escenas/enemyWallDetecter.gd" id="1_xfcvf"]
+[ext_resource type="Texture2D" uid="uid://bi30cj216hqu2" path="res://icon.svg" id="2_hs0cq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad4i4"]
+size = Vector2(65, 63)
+
+[node name="EnemigoWalkinginfinit" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_xfcvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(0.554688, 0.523438)
+texture = ExtResource("2_hs0cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ad4i4")
+
+[node name="wallDetector" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(0, -41)

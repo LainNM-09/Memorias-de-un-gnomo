@@ -1,0 +1,153 @@
+[gd_scene load_steps=22 format=3 uid="uid://by0e74g4k1a82"]
+
+[ext_resource type="Script" uid="uid://dy7qxcpgsoop2" path="res://scripts/JUGADOR.gd" id="1_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://dp12cs1wm23l2" path="res://Gnomo/gnomowalkabajo-Sheet.png" id="2_7dbtj"]
+[ext_resource type="PackedScene" uid="uid://bi4httd3nhdc5" path="res://escenas/dispaaro.tscn" id="2_ank2o"]
+[ext_resource type="Texture2D" uid="uid://uphl4e6tcrl3" path="res://Gnomo/gnomochikito, walkarriba-Sheet.png" id="3_ank2o"]
+[ext_resource type="Texture2D" uid="uid://bwvp1g40a1eti" path="res://Gnomo/Gnomochikito, walk-Sheet.png" id="4_2g103"]
+[ext_resource type="Texture2D" uid="uid://b6nj2rclkhgll" path="res://Gnomo/Gnomoidle-Sheet.png" id="5_xvjma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oqq7"]
+atlas = ExtResource("2_7dbtj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8mts"]
+atlas = ExtResource("2_7dbtj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg2lr"]
+atlas = ExtResource("3_ank2o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0f5w"]
+atlas = ExtResource("3_ank2o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhqhr"]
+atlas = ExtResource("3_ank2o")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r700a"]
+atlas = ExtResource("4_2g103")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n26kr"]
+atlas = ExtResource("4_2g103")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_661xm"]
+atlas = ExtResource("5_xvjma")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idsif"]
+atlas = ExtResource("5_xvjma")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md5kk"]
+atlas = ExtResource("5_xvjma")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jvrb"]
+atlas = ExtResource("5_xvjma")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihe6s"]
+atlas = ExtResource("5_xvjma")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp52p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oqq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8mts")
+}],
+"loop": true,
+"name": &"abajo",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg2lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0f5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhqhr")
+}],
+"loop": true,
+"name": &"arriba",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r700a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n26kr")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_661xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idsif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md5kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jvrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihe6s")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ct3r"]
+radius = 13.0
+height = 60.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghijl"]
+size = Vector2(36, 58.5)
+
+[node name="JUGADOR" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_ij6vw")
+bola_magic = ExtResource("2_ank2o")
+
+[node name="animated" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qp52p")
+animation = &"caminar"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_6ct3r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ghijl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

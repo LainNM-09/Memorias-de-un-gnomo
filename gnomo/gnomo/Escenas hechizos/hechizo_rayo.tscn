@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://quhehnbf050b"]
+
+[ext_resource type="Script" path="res://hechizo_rayo.gd" id="1_c5n6r"]
+[ext_resource type="Texture2D" uid="uid://2l7f0d88h74d" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/01.png" id="2_bucwe"]
+[ext_resource type="Texture2D" uid="uid://d3ut28y186258" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/02.png" id="3_vjrpa"]
+[ext_resource type="Texture2D" uid="uid://13encsjajght" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/03.png" id="4_d1em2"]
+[ext_resource type="Texture2D" uid="uid://dmdqaydrphxko" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/04.png" id="5_y3jn6"]
+[ext_resource type="Texture2D" uid="uid://cxdmryw33cccn" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/05.png" id="6_xl4dw"]
+[ext_resource type="Texture2D" uid="uid://65chuyerkmrd" path="res://Escenas hechizos/sprites hechizos/FX000_nyknck/FX000_nyknck/06.png" id="7_0to4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_512c8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fh552"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bucwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjrpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d1em2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y3jn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xl4dw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0to4f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 22
+collision_mask = 22
+script = ExtResource("1_c5n6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_512c8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fh552")
+frame_progress = 0.177154
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
